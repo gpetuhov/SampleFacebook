@@ -70,6 +70,9 @@ class MainActivity : AppCompatActivity() {
                 // Notice, that text will change only when the token changes (not on the app start)
             }
         }
+
+        initLoginStatus()
+        initUserName()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -93,5 +96,16 @@ class MainActivity : AppCompatActivity() {
     private fun isLoggedIn(): Boolean {
         val accessToken = AccessToken.getCurrentAccessToken()
         return accessToken != null && !accessToken.isExpired
+    }
+
+    private fun initLoginStatus() {
+        val text = "Logged in = ${isLoggedIn()}"
+        loginStatus.text = text
+    }
+
+    private fun initUserName() {
+        // This is how to get current profile
+        val profile = Profile.getCurrentProfile()
+        userName.text = profile?.name ?: ""
     }
 }
