@@ -10,9 +10,7 @@ import java.util.Arrays.asList
 import kotlinx.android.synthetic.main.activity_main.*
 import com.facebook.AccessToken
 import com.facebook.AccessTokenTracker
-
-
-
+import com.facebook.ProfileTracker
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,6 +20,7 @@ class MainActivity : AppCompatActivity() {
 
     private var callbackManager = CallbackManager.Factory.create()
     private var accessTokenTracker: AccessTokenTracker? = null
+    private var profileTracker: ProfileTracker? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,6 +58,18 @@ class MainActivity : AppCompatActivity() {
                 // Notice, that text will change only when the token changes (not on the app start)
             }
         }
+
+        // We can listen to profile changes like this.
+        // Don't forget to stop tracking on onDestroy
+        profileTracker = object : ProfileTracker() {
+            override fun onCurrentProfileChanged(
+                oldProfile: Profile?,
+                currentProfile: Profile?
+            ) {
+                userName.text = currentProfile?.name ?: ""
+                // Notice, that text will change only when the token changes (not on the app start)
+            }
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -73,6 +84,9 @@ class MainActivity : AppCompatActivity() {
 
         // Stop tracking token
         accessTokenTracker?.stopTracking()
+
+        // Stop tracking profile
+        profileTracker?.stopTracking()
     }
 
     // We can manually check if the user is logged in like this
