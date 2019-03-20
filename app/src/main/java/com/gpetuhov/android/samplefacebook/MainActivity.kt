@@ -13,7 +13,7 @@ import com.facebook.AccessToken
 import com.facebook.AccessTokenTracker
 import com.facebook.ProfileTracker
 import com.facebook.share.model.ShareLinkContent
-
+import com.facebook.share.widget.ShareDialog
 
 
 class MainActivity : AppCompatActivity() {
@@ -117,19 +117,21 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initShareButton() {
-        // In this example we always share a link to Facebook Developers website
-        val content = ShareLinkContent.Builder()
-            .setContentUrl(Uri.parse("https://developers.facebook.com"))
-            .build()
-
-        shareButton.shareContent = content
+        // Share content directly from the app
+        shareButton.shareContent = getContent()
     }
 
-    private fun getContent() {
-        
+    private fun getContent(): ShareLinkContent {
+        // In this example we always share a link to Facebook Developers website
+        return ShareLinkContent.Builder()
+            .setContentUrl(Uri.parse("https://developers.facebook.com"))
+            .build()
     }
 
     private fun shareWithFacebookApp() {
-
+        // Share content via native Facebook App.
+        // If the Facebook app is not installed,
+        // the Share dialog automatically falls back to the web-based dialog.
+        ShareDialog.show(this, getContent())
     }
 }
