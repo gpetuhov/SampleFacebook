@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">SampleFacebook</string>
+
+    <!-- Facebook App ID. To get it, create developer Facebook account and add app -->
+    <!-- This can be stored here, because it is restricted by debug and release key hashes,
+         which we also have to register along with the package name -->
+    <string name="facebook_app_id">392433808256258</string>
 </resources>
