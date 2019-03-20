@@ -18,9 +18,16 @@
             android:layout_marginTop="30dp"
             android:layout_marginBottom="30dp" />
 
+    <Button
+            android:id="@+id/checkLoginButtton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Check login"/>
+
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:text="Hello World!"/>
 
 </LinearLayout>

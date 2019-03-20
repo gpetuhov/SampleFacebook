@@ -10,6 +10,8 @@ import com.facebook.FacebookCallback
 import com.pawegio.kandroid.toast
 import java.util.Arrays.asList
 import kotlinx.android.synthetic.main.activity_main.*
+import com.facebook.AccessToken
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -40,6 +42,8 @@ class MainActivity : AppCompatActivity() {
                 toast("Login error")
             }
         })
+
+        checkLoginButtton.setOnClickListener { toast("Logged in = ${isLoggedIn()}") }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -47,5 +51,11 @@ class MainActivity : AppCompatActivity() {
         // (and for the callback to be triggered).
         callbackManager.onActivityResult(requestCode, resultCode, data)
         super.onActivityResult(requestCode, resultCode, data)
+    }
+
+    // We can check if the user is logged in like this
+    private fun isLoggedIn(): Boolean {
+        val accessToken = AccessToken.getCurrentAccessToken()
+        return accessToken != null && !accessToken.isExpired
     }
 }
