@@ -25,6 +25,7 @@
             android:text="Check login"/>
 
     <TextView
+            android:id="@+id/loginStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
