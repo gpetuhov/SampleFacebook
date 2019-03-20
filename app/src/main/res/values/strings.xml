@@ -5,4 +5,7 @@
     <!-- This can be stored here, because it is restricted by debug and release key hashes,
          which we also have to register along with the package name -->
     <string name="facebook_app_id">392433808256258</string>
+
+    <!-- Required for Facebook Login -->
+    <string name="fb_login_protocol_scheme">fb392433808256258</string>
 </resources>
