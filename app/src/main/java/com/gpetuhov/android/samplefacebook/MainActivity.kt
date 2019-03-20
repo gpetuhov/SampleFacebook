@@ -14,6 +14,9 @@ import com.facebook.AccessTokenTracker
 import com.facebook.ProfileTracker
 import com.facebook.share.model.ShareLinkContent
 import com.facebook.share.widget.ShareDialog
+import com.facebook.share.model.ShareHashtag
+
+
 
 
 class MainActivity : AppCompatActivity() {
@@ -125,7 +128,15 @@ class MainActivity : AppCompatActivity() {
         // In this example we always share a link to Facebook Developers website
         return ShareLinkContent.Builder()
             .setContentUrl(Uri.parse("https://developers.facebook.com"))
+            .setShareHashtag(   // hashtags
+                ShareHashtag.Builder()
+                    .setHashtag("#ConnectTheWorld")
+                    .build()
+            )
+            .setQuote("Connect on a global scale.")     // quote
             .build()
+
+        // To share photos, Facebook App must be installed
     }
 
     private fun shareWithFacebookApp() {
