@@ -37,4 +37,18 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"/>
 
+    <!-- Facebook share button -->
+    <!-- This button allows to share something to the user's timeline directly from the app -->
+    <com.facebook.share.widget.ShareButton
+            android:id="@+id/shareButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"/>
+
+    <Button
+            android:id="@+id/shareWithFacebookApp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"/>
+
 </LinearLayout>

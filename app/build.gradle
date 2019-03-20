@@ -38,4 +38,7 @@ dependencies {
 
     // Facebook Login
     implementation 'com.facebook.android:facebook-login:4.37.0'
+
+    // Facebook Share
+    implementation 'com.facebook.android:facebook-share:4.37.0'
 }

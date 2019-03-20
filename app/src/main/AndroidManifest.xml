@@ -40,6 +40,11 @@
             </intent-filter>
         </activity>
 
+        <!-- Facebook Share -->
+        <provider android:authorities="com.facebook.app.FacebookContentProvider392433808256258"
+                  android:name="com.facebook.FacebookContentProvider"
+                  android:exported="true"/>
+
     </application>
 
 </manifest>

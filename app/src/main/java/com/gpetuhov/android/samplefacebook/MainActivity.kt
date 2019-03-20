@@ -1,6 +1,7 @@
 package com.gpetuhov.android.samplefacebook
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.facebook.*
@@ -11,6 +12,9 @@ import kotlinx.android.synthetic.main.activity_main.*
 import com.facebook.AccessToken
 import com.facebook.AccessTokenTracker
 import com.facebook.ProfileTracker
+import com.facebook.share.model.ShareLinkContent
+
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -73,6 +77,9 @@ class MainActivity : AppCompatActivity() {
 
         initLoginStatus()
         initUserName()
+        initShareButton()
+
+        shareWithFacebookApp.setOnClickListener { shareWithFacebookApp() }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -107,5 +114,22 @@ class MainActivity : AppCompatActivity() {
         // This is how to get current profile
         val profile = Profile.getCurrentProfile()
         userName.text = profile?.name ?: ""
+    }
+
+    private fun initShareButton() {
+        // In this example we always share a link to Facebook Developers website
+        val content = ShareLinkContent.Builder()
+            .setContentUrl(Uri.parse("https://developers.facebook.com"))
+            .build()
+
+        shareButton.shareContent = content
+    }
+
+    private fun getContent() {
+        
+    }
+
+    private fun shareWithFacebookApp() {
+
     }
 }
