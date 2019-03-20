@@ -52,4 +52,11 @@
             android:layout_marginTop="16dp"
             android:text="Share with Facebook App"/>
 
+    <Button
+            android:id="@+id/friendsCountButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Get friends count"/>
+
 </LinearLayout>

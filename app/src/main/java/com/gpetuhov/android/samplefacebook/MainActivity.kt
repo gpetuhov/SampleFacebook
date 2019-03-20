@@ -15,9 +15,7 @@ import com.facebook.ProfileTracker
 import com.facebook.share.model.ShareLinkContent
 import com.facebook.share.widget.ShareDialog
 import com.facebook.share.model.ShareHashtag
-
-
-
+import com.facebook.GraphRequest
 
 class MainActivity : AppCompatActivity() {
 
@@ -83,6 +81,8 @@ class MainActivity : AppCompatActivity() {
         initShareButton()
 
         shareWithFacebookApp.setOnClickListener { shareWithFacebookApp() }
+
+        friendsCountButton.setOnClickListener { getFriendsCount() }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -144,5 +144,23 @@ class MainActivity : AppCompatActivity() {
         // If the Facebook app is not installed,
         // the Share dialog automatically falls back to the web-based dialog.
         ShareDialog.show(this, getContent())
+    }
+
+    // Get friends count using the Graph API
+    private fun getFriendsCount() {
+        if (isLoggedIn()) {
+            val request = GraphRequest.newMyFriendsRequest(
+                AccessToken.getCurrentAccessToken()
+            ) { jsonArray, response ->
+                // Application code
+                val friendsCount = jsonArray?.length() ?: 0
+                toast("You have $friendsCount friends")
+            }
+
+            request.executeAsync()
+
+        } else {
+            toast("Not logged in")
+        }
     }
 }
